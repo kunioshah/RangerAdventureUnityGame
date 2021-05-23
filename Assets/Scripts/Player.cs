@@ -292,7 +292,7 @@ public class Player : MonoBehaviour
         Time.timeScale = 1;
     }
 
-    void playerDeath()
+    public void PlayerDeath()
     {
         playerState = PlayerState.Death;
         StartCoroutine(Die());

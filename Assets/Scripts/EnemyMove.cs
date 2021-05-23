@@ -69,6 +69,7 @@ public class EnemyMove : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
+            collision.GetComponent<Player>().PlayerDeath();
             Debug.Log("collided with player");
         }
     }

@@ -39,23 +39,31 @@ public class Player : MonoBehaviour
     bool colliderTriggered = false;
     string[][] dialog = new string[][]
     {
-        new string[] {"Alright, let's get started!"},
+        new string[] {"Hey there! Welcome to my 8th Grade Life Sciences Project.",
+        "I'll be explaining a few principles of life science through this game! Let's get started!"},
         new string[]{"Hmm, that looks like cacti... Make sure not to touch it!"},
         new string[]{"Look at this hill! There are so many layers in it, and the hill is filled with fossils! Fascinating."},
         new string[]{"As the layers go up, the fossils change... This is like a natural time scale! We call this the fossil record....",
-            "As you go up, the types of rock change. So the lower rock layers must be the eldest layers, as more rock is piled on it....",
+            "As you go up, the types of rock change." ,
+            "So the lower rock layers must be the eldest layers, as more rock is piled on it....",
             "That's called the law of superposition, by the way!",
-            "So the types of fossils in the rock were from the time period of the rock, meaning that the fossils in the lower rock are older!",
+            "So the types of fossils in the rock were from the time period of the rock...",
+            "Meaning that the fossils in the lower rock are older!",
         "This is called relative dating - finding out how old fossils and rock is compared to other fossils and rock."},
-        new string[]{"You can see how the organisms became more complex overtime. A lot of them look similar, they must have evolved from the older organisms.",
-            "Plus, you see that little spiral fossil? How it's only in that one layer? That's what we call an index fossil, a recognizable fossil only in one time period that we can use as an index for others.",
+        new string[]{"You can see how the organisms became more complex overtime." ,
+            "A lot of them look similar, they must have evolved from the older organisms.",
+            "Plus, you see that little spiral fossil? How it's only in that one layer?",
+            "That's what we call an index fossil, a recognizable fossil only in one time period that we use as an index for others.",
             "Of course, the other kind of dating - talking about rocks, anyways - is radioactive dating.",
-            "Basically, elements decay at a certain rate, called their half life. By calculating the rate of decay of a rock against how much of it has decayed, we can see how old it is, and then place it into the time scale."
-        },
-        new string[]{"The Geologic Time Scale is the time and eras that Earth has gone through. Yup, that's the age of the earth. And everything it's gone through.",
-        "Hmm, there sure are a lot of fossils in this layer. Must have been a big extinction event. That's when a major disaster happens that kills many species.",
-        "And then, new organisms come, and then they die."}
-        //new string[]{""},
+            "Basically, elements decay at a certain rate, called their half life.",
+            "By calculating the rate of decay of a rock against how much of it has decayed..." ,
+            "we can see how old it is, and then place it into the time scale." },
+        new string[]{"The Geologic Time Scale is the time and eras that Earth has gone through." ,
+            "Yup, that's the age of the earth. And everything it's gone through.",
+            "Hmm, there sure are a lot of fossils in this layer. Must have been a big extinction event. That's when a major disaster happens that kills many species.",
+            "And then, new organisms come, and then they die."},
+        new string[]{"Oh wow, look at that bee fossil! Those are huge wings!"},
+        new string[]{"Wow, that's a large eagle! It's strange how it's wings look so different from the bee..."},
         //new string[]{""},
         //new string[]{""},
         //new string[]{""},
@@ -93,7 +101,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         // if (hasPlayer && Input.GetKeyDown(KeyCode.A))
-        if (Input.GetKeyDown(KeyCode.A) && colliderTriggered)
+        if (Input.GetKeyDown(KeyCode.K) && colliderTriggered)
         {
             Debug.Log("a pressed");
             if (currentSubDialog > dialog[currentDialogCounter].Length - 1)
@@ -380,9 +388,16 @@ public class Player : MonoBehaviour
         if (trigger6)
         {
             dialogueProgress(trigger6, collision, "rock layers balah askldghasldg;s.");
-            dialogueProgress(trigger6, collision, "ok so test if this works?.");
+            //dialogueProgress(trigger6, collision, "ok so test if this works?.");
         }
-
+        if (trigger7)
+        {
+            dialogueProgress(trigger7, collision, "blahblahblha");
+        }
+        if (trigger8)
+        {
+            dialogueProgress(trigger8, collision, "blahblahblha");
+        }
         IEnumerator LizardText()
         {
             textToChange.text = "As the layers go up, the fossils change... This is like a natural time scale! We call this the fossil record.";

@@ -37,12 +37,12 @@ public class EnemyMove : MonoBehaviour
         if (xMoveDirection > 0)
         {
             var scaleX = gameObject.transform.localScale.x;
-            gameObject.transform.localScale = new Vector3(scaleX * -1, 5, 1);
+            gameObject.transform.localScale = new Vector3(scaleX * -1, 3, 1);
             xMoveDirection = -1;
 
         } else {
             var scaleX = gameObject.transform.localScale.x;
-            gameObject.transform.localScale = new Vector3(scaleX * -1, 5, 1);
+            gameObject.transform.localScale = new Vector3(scaleX * -1, 3, 1);
             xMoveDirection = 1;
         }
     }

@@ -36,6 +36,7 @@ public class Player : MonoBehaviour
 
     int currentDialogCounter = 0;
     int currentSubDialog = 0;
+    bool colliderTriggered = false;
     string[][] dialog = new string[][]
     {
         new string[] {"Alright, let's get started!"},
@@ -78,7 +79,7 @@ public class Player : MonoBehaviour
     void Start()
     {
 
-        textToChange.text = "Alright, let's get started!";
+        //textToChange.text = "Alright, let's get started!";
         sceneLoader = FindObjectOfType<SceneLoader>();
         gameSession = FindObjectOfType<GameSession>();
         //textsStyle = sceneLoader.getStyle();
@@ -92,7 +93,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         // if (hasPlayer && Input.GetKeyDown(KeyCode.A))
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.A) && colliderTriggered)
         {
             Debug.Log("a pressed");
             if (currentSubDialog > dialog[currentDialogCounter].Length - 1)
@@ -103,6 +104,7 @@ public class Player : MonoBehaviour
                 whatere = true;
                 currentSubDialog = 0;
                 currentDialogCounter++;
+                colliderTriggered = false;
             }
             else
             {
@@ -328,6 +330,7 @@ public class Player : MonoBehaviour
                 Pause();
                 Destroy(trigger);
                 currentSubDialog++;
+                colliderTriggered = true;
                 //Destroy(collisions);
                 //UnPause();
             }

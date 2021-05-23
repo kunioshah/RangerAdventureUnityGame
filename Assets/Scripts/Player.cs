@@ -247,30 +247,38 @@ public class Player : MonoBehaviour
         }
 
 
-        if (hit.distance <= distanceToBottom && hit.collider.tag == "bounceEnemy")
+        if (hit.collider.tag == "bounceEnemy")
         {
-            Debug.Log("raycast down");
-            Debug.Log("entered this thing");
-            Debug.Log("hit distance is " + hit.distance + " dustance to bottom is " + distanceToBottom);
-            directionstomped = "down";
-            hit.collider.GetComponent<EnemyMove>().Crush();
-            IEnumerator destroyAfterTime()
+            if (hit.distance < distanceToBottom)
             {
-                yield return null;
-                //if (hit.collider.gameObject.GetComponent<PolygonCollider2D>() != null)
-                //{
-                //    Debug.Log("destroying box collider");
-                //    Destroy(hit.collider.gameObject.GetComponent<PolygonCollider2D>());
-                //}
-                //if (hit.collider.gameObject.GetComponent<Rigidbody2D>() != null)
-                //{
-                //    Debug.Log("destroying rigid boyd");
-                //    Destroy(hit.collider.gameObject.GetComponent<Rigidbody2D>());
-                //}
-                //Destroy(hit.collider);
+                Debug.Log("enemy touched the player");
+                PlayerDeath();
             }
+            else
+            {
+                Debug.Log("raycast down");
+                Debug.Log("entered this thing");
+                Debug.Log("hit distance is " + hit.distance + " dustance to bottom is " + distanceToBottom);
+                directionstomped = "down";
+                hit.collider.GetComponent<EnemyMove>().Crush();
+                IEnumerator destroyAfterTime()
+                {
+                    yield return null;
+                    //if (hit.collider.gameObject.GetComponent<PolygonCollider2D>() != null)
+                    //{
+                    //    Debug.Log("destroying box collider");
+                    //    Destroy(hit.collider.gameObject.GetComponent<PolygonCollider2D>());
+                    //}
+                    //if (hit.collider.gameObject.GetComponent<Rigidbody2D>() != null)
+                    //{
+                    //    Debug.Log("destroying rigid boyd");
+                    //    Destroy(hit.collider.gameObject.GetComponent<Rigidbody2D>());
+                    //}
+                    //Destroy(hit.collider);
+                }
 
-            StartCoroutine(destroyAfterTime());
+                StartCoroutine(destroyAfterTime());
+            }
         }
     }
 

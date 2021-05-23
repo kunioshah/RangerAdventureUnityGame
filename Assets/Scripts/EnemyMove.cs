@@ -22,7 +22,7 @@ public class EnemyMove : MonoBehaviour
         {
             rigidbody.velocity = new Vector2(xMoveDirection * EnemySpeed, 0) ;
         }
-        Debug.Log("hit distance is " + hit.distance);
+        //Debug.Log("hit distance is " + hit.distance);
         if (hit.distance < 1.8f) {
            // FlipPlayer();
             if (hit.collider.tag == "Player")

@@ -22,37 +22,27 @@ public class PlayerHealth : MonoBehaviour
         }
         if (hasDied == true)
         {
-            StartCoroutine("Die");
-            StartCoroutine(Die());
+           // StartCoroutine("Die");
+           // StartCoroutine(Die());
         }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Debug.Log(collision.collider.tag);
-            if (collision.collider.tag == "Death")
-            {
-                Debug.Log("I have died");
-                StartCoroutine(Die());
-            }
-            Debug.Log("I bleh died");
+        if (collision.collider.tag == "Death")
+        {
+            collision.collider.GetComponent<Player>().PlayerDeath();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log(collision.tag);
+        
         if (collision.tag == "Death")
         {
-            Debug.Log("I have died");
-            StartCoroutine(Die());
+            collision.GetComponent<Player>().PlayerDeath();
         }
-        Debug.Log("I bleh died");
-    }
-
-
-    IEnumerator Die() {
-        SceneManager.LoadScene("Science_Project");
-        yield return null;
-
+        
     }
 }

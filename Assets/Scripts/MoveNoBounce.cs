@@ -45,14 +45,8 @@ public class MoveNoBounce : MonoBehaviour
     {
         if (collision.collider.tag == "Player")
         {
-            StartCoroutine(Die());
+            collision.collider.GetComponent<Player>().PlayerDeath();
         }
-    }
-
-    IEnumerator Die()
-    {
-        yield return new WaitForSeconds(2);
-        SceneManager.LoadScene("Science_Project");
     }
 }
 

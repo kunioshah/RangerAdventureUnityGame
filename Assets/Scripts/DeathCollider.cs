@@ -21,17 +21,12 @@ public class DeathCollider : MonoBehaviour
         Debug.Log(collision.tag);
         if (collision.tag == "Player")
         {
-            StartCoroutine(Die());
-            
+            collision.GetComponent<Player>().PlayerDeath();
+       
         }
     }
 
-    IEnumerator Die()
-    {
-        yield return new WaitForSeconds(2);
-        SceneManager.LoadScene("Science_Project");
-    }
-
+   
     private void OnCollisionEnter2D(Collision2D collision)
     {
         

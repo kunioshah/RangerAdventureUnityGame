@@ -33,7 +33,7 @@ public class Player : MonoBehaviour
     SceneLoader sceneLoader;
     public bool whatere = false;
     [SerializeField] GameObject floor;
-
+    private bool isDead = false;
     int currentDialogCounter = 0;
     int currentSubDialog = 0;
     bool colliderTriggered = false;
@@ -90,11 +90,6 @@ public class Player : MonoBehaviour
         //textToChange.text = "Alright, let's get started!";
         sceneLoader = FindObjectOfType<SceneLoader>();
         gameSession = FindObjectOfType<GameSession>();
-        //textsStyle = sceneLoader.getStyle();
-        //        Debug.Log(sceneLoader.getStyle());
-        //textsStyle = "manual";
-        Debug.Log("jagged arry=" + dialog[3].Length);
-        Debug.Log(textsStyle);
     }
 
     // Update is called once per frame
@@ -136,6 +131,12 @@ public class Player : MonoBehaviour
 
     void PlayerMove()
     {
+        if (isDead)
+        {
+            playerState = PlayerState.Death;
+            ChangeAnimation();
+            return;
+        }
         moveX = Input.GetAxis("Horizontal");
         if (Input.GetButtonDown("Jump") && isGrounded == true)
         {
@@ -167,6 +168,8 @@ public class Player : MonoBehaviour
             ChangeAnimation();
             //   Debug.Log("changed to idle");
         }
+        
+//        Debug.Log("Player state=" + playerState);
     }
 
     void PlayerJump()
@@ -175,23 +178,14 @@ public class Player : MonoBehaviour
         GetComponent<Rigidbody2D>().AddForce(Vector2.up * playerJump);
         isGrounded = false;
     }
-
-    void FlipPlayer()
-    {
-        facingRight = !facingRight;
-        Vector2 localScale = gameObject.transform.localScale;
-        localScale.x *= -1;
-        transform.localScale = localScale;
-        if (isGrounded)
-        {
-
-
-        }
-    }
-
     private void ChangeAnimation()
     {
-        if (playerState == PlayerState.Idle)
+        if (isDead)
+        {
+            Debug.Log("DEAD");
+            GetComponent<Animator>().SetTrigger("IsDead");
+        }
+        else if (playerState == PlayerState.Idle)
         {
             GetComponent<Animator>().SetTrigger("IsIdle");
             whatweon = "Idle";
@@ -205,16 +199,8 @@ public class Player : MonoBehaviour
         {
             GetComponent<Animator>().SetTrigger("IsJumping");
         }
+       
     }
-
-    //private void OnCollisionEnter2D(Collision2D collision)
-    //{
-    //    if (collision.gameObject.tag == "Surface") {
-    //    //    Debug.Log("hit the ground");
-    //        isGrounded = true;
-    //        playerState = PlayerState.Idle;
-    //    }
-    //}
 
     public IEnumerator ContinuousDebugs(string debugs)
     {
@@ -222,16 +208,6 @@ public class Player : MonoBehaviour
         Debug.Log(debugs);
     }
 
-    void playerDeathCast()
-    {
-        Vector2 originLeft = new Vector2(transform.position.x - 0.5f + 0.2f, transform.position.y - 1f);
-        Vector2 originMiddle = new Vector2(transform.position.x, transform.position.y - 1f);
-        Vector2 originRight = new Vector2(transform.position.x + 0.5f - 0.2f, transform.position.y - 1f);
-
-        //RaycastHit2D floorLeft = Physics2D.Raycast(originLeft, Vector2.down, velocity.y * Time.deltaTime, floorMask);
-        //RaycastHit2D floorMiddle = Physics2D.Raycast(originMiddle, Vector2.down, velocity.y * Time.deltaTime, floorMask);
-        //RaycastHit2D floorRight = Physics2D.Raycast(originRight, Vector2.down, velocity.y * Time.deltaTime, floorMask);
-    }
     void PlayerRaycast()
     {
         RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down);
@@ -310,13 +286,18 @@ public class Player : MonoBehaviour
 
     public void PlayerDeath()
     {
-        playerState = PlayerState.Death;
+        
+        
         StartCoroutine(Die());
     }
 
     IEnumerator Die()
     {
-        yield return new WaitForSeconds(2);
+        playerState = PlayerState.Death;
+        isDead = true;
+        ChangeAnimation();
+        yield return new WaitForSeconds(1.02f);
+     
         SceneManager.LoadScene("Science_Project");
     }
 

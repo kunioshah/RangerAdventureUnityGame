@@ -9,6 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Science_Project.unity
     guid: feee5636c076f4be0986e84392212911
   - enabled: 1
-    path: Assets/Scenes/StartScreen.unity
+    path: Assets/Scenes/EndScreen.unity
     guid: c9666e262a8fc409ab9d3ba0f7497795
   m_configObjects: {}

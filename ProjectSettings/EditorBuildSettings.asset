@@ -6,14 +6,11 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/Scenes/StartScreen.unity
+    guid: c9666e262a8fc409ab9d3ba0f7497795
   - enabled: 1
     path: Assets/Scenes/Science_Project.unity
     guid: feee5636c076f4be0986e84392212911
-  - enabled: 1
-    path: Assets/Scenes/StartScreen.unity
-    guid: c9666e262a8fc409ab9d3ba0f7497795
   - enabled: 1
     path: Assets/Scenes/HalpScreen.unity
     guid: f83eb47f9d89b4ec8aed6938fab305dc

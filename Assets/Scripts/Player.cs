@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using TMPro;
 
 public class Player : MonoBehaviour
@@ -37,11 +38,12 @@ public class Player : MonoBehaviour
     int currentDialogCounter = 0;
     int currentSubDialog = 0;
     bool colliderTriggered = false;
+    GameObject dialogueImage;
     string[][] dialog = new string[][]
     {
         new string[] {"Hey there! Welcome to my 8th Grade Life Sciences Project.",
-        "This project was made by Kunal Shah, 8th grade.",
-        "I'll be explaining a few principles of life science through this game! Let's get started!",
+        "This project was made by Kunal Shah, 8th grade.~Images/shareimage1",
+        "I'll be explaining a few principles of life science through this game! Let's get started!~Images/shareimage2",
         "You play as a ranger documenting ingo, with your robot guide helping you.",
         "The only commands you need are the arrow keys to move and space to jump!",
         "Have fun!"},
@@ -134,6 +136,11 @@ public class Player : MonoBehaviour
         //textToChange.text = "Alright, let's get started!";
         sceneLoader = FindObjectOfType<SceneLoader>();
         gameSession = FindObjectOfType<GameSession>();
+        dialogueImage = GameObject.FindGameObjectWithTag("DialogueImage");
+        if (dialogueImage)
+        {
+            dialogueImage.SetActive(false);
+        }
     }
 
     // Update is called once per frame
@@ -152,12 +159,22 @@ public class Player : MonoBehaviour
                 currentSubDialog = 0;
                 currentDialogCounter++;
                 colliderTriggered = false;
+                dialogueImage.SetActive(false);
             }
             else
             {
                 Pause();
-                Debug.Log("currentdialogcounter=" + currentDialogCounter + " currentSubDialog=" + currentSubDialog);
-                textToChange.text = dialog[currentDialogCounter][currentSubDialog];
+                //Debug.Log("currentdialogcounter=" + currentDialogCounter + " currentSubDialog=" + currentSubDialog);
+                dialogueImage.SetActive(false);
+                var dialogTextArray = dialog[currentDialogCounter][currentSubDialog].Split('~');
+                textToChange.text = dialogTextArray[0];
+                if (dialogTextArray.Length > 1)
+                {
+                    Debug.Log(Resources.Load<Sprite>(dialogTextArray[1]));
+
+                    dialogueImage.GetComponent<Image>().sprite = Resources.Load<Sprite>(dialogTextArray[1]);//Resources.Load(dialogTextArray[1], typeof(Sprite)) as Sprite;;
+                    dialogueImage.SetActive(true);
+                }
                 currentSubDialog++;
             }
 

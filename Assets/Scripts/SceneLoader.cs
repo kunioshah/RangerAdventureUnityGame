@@ -115,7 +115,7 @@ public class SceneLoader : MonoBehaviour
         }
         if (firstScreen == true)
         {
-            SceneManager.LoadScene("HalpScreen");
+            SceneManager.LoadScene("Science_Project");
         }
     }
 

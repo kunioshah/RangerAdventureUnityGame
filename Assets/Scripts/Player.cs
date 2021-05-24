@@ -40,12 +40,16 @@ public class Player : MonoBehaviour
     string[][] dialog = new string[][]
     {
         new string[] {"Hey there! Welcome to my 8th Grade Life Sciences Project.",
-        "I'll be explaining a few principles of life science through this game! Let's get started!"},
+        "This project was made by Kunal Shah, 8th grade.",
+        "I'll be explaining a few principles of life science through this game! Let's get started!",
+        "You play as a ranger documenting ingo, with your robot guide helping you.",
+        "The only commands you need are the arrow keys to move and space to jump!",
+        "Have fun!"},
         new string[]{"Hmm, that looks like cacti... Make sure not to touch it!"},
         new string[]{"Look at this hill! There are so many layers in it, and the hill is filled with fossils! Fascinating."},
         new string[]{"As the layers go up, the fossils change... This is like a natural time scale! We call this the fossil record....",
             "As you go up, the types of rock change." ,
-            "So the lower rock layers must be the eldest layers, as more rock is piled on it....",
+            "So the lower rock layers must be the eldest layers, as more rock is piled on it.",
             "That's called the law of superposition, by the way!",
             "So the types of fossils in the rock were from the time period of the rock...",
             "Meaning that the fossils in the lower rock are older!",
@@ -60,12 +64,41 @@ public class Player : MonoBehaviour
             "we can see how old it is, and then place it into the time scale." },
         new string[]{"The Geologic Time Scale is the time and eras that Earth has gone through." ,
             "Yup, that's the age of the earth. And everything it's gone through.",
-            "Hmm, there sure are a lot of fossils in this layer. Must have been a big extinction event. That's when a major disaster happens that kills many species.",
+            "Hmm, there sure are a lot of fossils in this layer. Must have been a big extinction event.",
+            "That's when a major disaster happens that kills many species.",
             "And then, new organisms come, and then they die."},
         new string[]{"Oh wow, look at that bee fossil! Those are huge wings!"},
-        new string[]{"Wow, that's a large eagle! It's strange how it's wings look so different from the bee..."},
-        //new string[]{""},
-        //new string[]{""},
+        new string[]{"Wow, that's a large eagle! It's strange how it's wings look so different from the bee...",
+        "You know? Like the structure looks so different but it fulfills the same purpose.",
+        "That's called an analogous structure - it's a different structure that fulfills the same purpose.",
+        "So the bee may have evolved differently from the eagle. Sometimes you'll see the opposite...",},
+        new string[]{"Look at that dinosaur! Did you know that it may have been the ancestor of that eagle?",
+        "Yeah, look at the head structure, it's similar.",
+        "It should be millions of years dead! This is a freak of nature!",
+        "When a structure on two organisms is similar even though they may have a different purpose...",
+        "That's called a homologous structure.",
+        "When you see one, it usually means that those organisms have a common ancestor and evolved from it.",
+        "You can see homologous similarities on multiple living organisms...",
+        "And fossils! It's interesting to trace an animal's evolutionary path.",
+        "We can even trace similarities in animals' embryo stages!",
+        "Animals with similar embryos could have evolved from a common ancestor.",
+        "Another indicator of common ancestors is a vestigial structure.",
+        "These are structures that aren't useful on an organism but are likely left over from an ancestor.",
+        "Leg bones on whales, extra toe bones, stuff like that."},
+        new string[]{ "Man, look at these lizards.",
+            "Notice how most of them are orange? They're trying to blend in with the environment.",
+            "This is called camoflauge. The lizards are trying to mimic the ground and blend in.",
+            "There's probably an interesting past behind why they're all orange.",
+            "The lizards were probably all a different color - just like that green one over there.",
+            "There were probably some orange variations, or genetic mutations of the lizard.",
+            "Then as the area grew more, well... orange...",
+            "The orange mutations were killed by predators less and bred more.",
+            "These lizards had orange traits, or characteristics, that were passed down to the offspring.",
+            "Meanwhile, the green ones were killed more, and bred less.",
+            "There's a theory for this called survival of the fittest.",
+            "It states that the organisms best adapted to their environment will live as the others die.",
+            "So over time, almost the entire population became orange.",
+            "This is called natural selection.",},
         //new string[]{""},
         //new string[]{""},
         //new string[]{""}
@@ -375,6 +408,18 @@ public class Player : MonoBehaviour
         if (trigger8)
         {
             dialogueProgress(trigger8, collision, "blahblahblha");
+        }
+        if (trigger9)
+        {
+            dialogueProgress(trigger9, collision, "blahblahblha");
+        }
+        if (trigger10)
+        {
+            dialogueProgress(trigger10, collision, "blahblahblha");
+        }
+        if (trigger11)
+        {
+            dialogueProgress(trigger11, collision, "blahblahblha");
         }
         IEnumerator LizardText()
         {

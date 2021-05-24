@@ -5,6 +5,8 @@ using UnityEngine;
 public class GameSession : MonoBehaviour
 {
     private GameState gameState = GameState.Manual;
+    private int checkPoint = 0;
+    private int dialogCounter = 0;
 
     private void SetUpSingletion()
     {
@@ -26,6 +28,26 @@ public class GameSession : MonoBehaviour
     public GameState GetGameState()
     {
         return gameState;
+    }
+
+    public void SetCheckpoint(int point)
+    {
+        checkPoint = point;
+    }
+
+    public int GetCheckpoint()
+    {
+        return checkPoint;
+    }
+
+    public void SetDialogCounter(int counter)
+    {
+        dialogCounter = counter;
+    }
+
+    public int GetDialogCounter()
+    {
+        return dialogCounter;
     }
 
     private void Awake()

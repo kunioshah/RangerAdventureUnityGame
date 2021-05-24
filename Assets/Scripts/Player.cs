@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 public class Player : MonoBehaviour
 {
@@ -21,6 +22,7 @@ public class Player : MonoBehaviour
     [SerializeField] GameObject trigger10;
     [SerializeField] GameObject trigger11;
     [SerializeField] GameObject trigger12;
+    [SerializeField] float[] checkpoints = { 0, 15, 100, 150};
     public bool facingRight = true;
     bool hasPlayer = false;
     [SerializeField] public int playerJump = 250;
@@ -141,6 +143,16 @@ public class Player : MonoBehaviour
         {
             dialogueImage.SetActive(false);
         }
+        Debug.Log("gameSession.GetCheckpoint()=" + gameSession.GetCheckpoint());
+        if (gameSession.GetCheckpoint() > 0)
+        {
+            Vector3 p = transform.position;
+            p.x = checkpoints[gameSession.GetCheckpoint()];
+            transform.position = p;
+
+            currentDialogCounter = gameSession.GetDialogCounter();
+            FindObjectOfType<Canvas>().enabled = false;
+        }
     }
 
     // Update is called once per frame
@@ -149,7 +161,6 @@ public class Player : MonoBehaviour
         // if (hasPlayer && Input.GetKeyDown(KeyCode.A))
         if (Input.GetKeyDown(KeyCode.K) && colliderTriggered)
         {
-            Debug.Log("a pressed");
             if (currentSubDialog > dialog[currentDialogCounter].Length - 1)
             { 
                 FindObjectOfType<Canvas>().enabled = false;
@@ -170,9 +181,8 @@ public class Player : MonoBehaviour
                 textToChange.text = dialogTextArray[0];
                 if (dialogTextArray.Length > 1)
                 {
-                    Debug.Log(Resources.Load<Sprite>(dialogTextArray[1]));
 
-                    dialogueImage.GetComponent<Image>().sprite = Resources.Load<Sprite>(dialogTextArray[1]);//Resources.Load(dialogTextArray[1], typeof(Sprite)) as Sprite;;
+                    dialogueImage.GetComponent<Image>().sprite = Resources.Load<Sprite>(dialogTextArray[1]);
                     dialogueImage.SetActive(true);
                 }
                 currentSubDialog++;
@@ -188,6 +198,23 @@ public class Player : MonoBehaviour
         //if (Input.GetKeyDown(KeyCode.A)) {
         //    Pause();
         //}
+        SetCheckpoint();
+    }
+
+    private void SetCheckpoint()
+    {
+        var gameSessionCheckpoint = gameSession.GetCheckpoint();
+        if (checkpoints.Length > gameSessionCheckpoint + 1)
+        {
+            //Debug.Log("x=" + gameObject.transform.position.x + " gamesessionchekpoint=" + checkpoints + " checkpoint=" + checkpoints[gameSessionCheckpoint + 1]);
+            if (gameObject.transform.position.x > checkpoints[gameSessionCheckpoint + 1])
+            {
+                //Debug.Log("Inside setcheckpoint");
+                gameSession.SetCheckpoint(gameSessionCheckpoint+1);
+                gameSession.SetDialogCounter(currentDialogCounter);
+                //Debug.Log("gameSession.GetCheckpoint1()=" + gameSession.GetCheckpoint());
+            }
+        }
     }
 
     void PlayerMove()

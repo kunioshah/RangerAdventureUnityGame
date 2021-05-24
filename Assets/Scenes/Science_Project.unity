@@ -26269,6 +26269,30 @@ PrefabInstance:
       propertyPath: distanceToBottom
       value: 1.345
       objectReference: {fileID: 0}
+    - target: {fileID: 7271559911601520914, guid: eb75fa7a11843446e9b1fdbd148e2d21, type: 3}
+      propertyPath: checkpoints.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7271559911601520914, guid: eb75fa7a11843446e9b1fdbd148e2d21, type: 3}
+      propertyPath: checkpoints.Array.data[1]
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 7271559911601520914, guid: eb75fa7a11843446e9b1fdbd148e2d21, type: 3}
+      propertyPath: checkpoints.Array.data[2]
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 7271559911601520914, guid: eb75fa7a11843446e9b1fdbd148e2d21, type: 3}
+      propertyPath: checkpoints.Array.data[3]
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 7271559911601520914, guid: eb75fa7a11843446e9b1fdbd148e2d21, type: 3}
+      propertyPath: checkpoints.Array.data[4]
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 7271559911601520914, guid: eb75fa7a11843446e9b1fdbd148e2d21, type: 3}
+      propertyPath: checkpoints.Array.data[5]
+      value: 300
+      objectReference: {fileID: 0}
     - target: {fileID: 7271559911601520916, guid: eb75fa7a11843446e9b1fdbd148e2d21, type: 3}
       propertyPath: m_Name
       value: Player

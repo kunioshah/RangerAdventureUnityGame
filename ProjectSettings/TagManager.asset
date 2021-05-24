@@ -8,6 +8,7 @@ TagManager:
   - Surface
   - bounceEnemy
   - DialogCanvas
+  - Bones
   layers:
   - Default
   - TransparentFX

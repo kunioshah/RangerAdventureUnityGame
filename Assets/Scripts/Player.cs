@@ -198,7 +198,6 @@ public class Player : MonoBehaviour
     {
         if (isDead)
         {
-            Debug.Log("DEAD");
             GetComponent<Animator>().SetTrigger("IsDead");
         }
         else if (playerState == PlayerState.Idle)
@@ -302,8 +301,6 @@ public class Player : MonoBehaviour
 
     public void PlayerDeath()
     {
-        
-        
         StartCoroutine(Die());
     }
 

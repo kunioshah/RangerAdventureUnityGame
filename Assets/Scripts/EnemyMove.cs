@@ -48,6 +48,8 @@ public class EnemyMove : MonoBehaviour
     }
     public void Crush()
     {
+        var bones = GameObject.FindGameObjectWithTag("Bones");
+        bones.transform.position = new Vector3(gameObject.transform.position.x, -3.75f);
         Destroy(gameObject);
     }
     private void OnCollisionEnter2D(Collision2D collision)

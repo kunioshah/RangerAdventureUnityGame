@@ -38,7 +38,7 @@ public class Player : MonoBehaviour
     public bool whatere = false;
     [SerializeField] GameObject floor;
     private bool isDead = false;
-    int currentDialogCounter = 0;
+    int currentDialogCounter = 10;
     int currentSubDialog = 0;
     bool colliderTriggered = false;
     GameObject dialogueImage;
@@ -105,42 +105,42 @@ public class Player : MonoBehaviour
             "So over time, almost the entire population became orange.",
             "This is called natural selection.",},
         new string[]{"Aww, look at these baby birds! Are they alone?",
-        "You know. We could probably find out who their parents are.",
-        "How? Oh, it's simple, we can look at their traits!",
-        "These birds have dark blue eyes with blue specks and white skin.",
-        "We can see what genes may have caused this.",
-        "Here, I'll pull up a diagram. This is called a punnet square.~Images/shareimage1",
-        "Those letters are called alleles. Alleles are your genes.~Images/shareimage1",
-        "Each parent passes down one allele for each trait. Both alleles together form your genotype.~Images/shareimage1",
-        "That's both of those letters together.~Images/shareimage1",
-        "Each letter represents a different trait.~Images/shareimage1 ",
-        "So, for example, capital W means white skin and lowercase w means brown skin.~Images/shareimage1",
-        "Since each of your parents have 2 alleles in one trait, they pass down one of them.~Images/shareimage1",
-        "The chance of either gene is random.~Images/shareimage1",
-        "So, as you see in this punnet sqsuare, if one parent has Ww gene and one has ww gene...~Images/shareimage1",
-        "The probability of any of their offspring having Ww is 1/2, or 2 of the four squares...~Images/shareimage1 ",
-        "The probability of any of them having ww is 1/2, or 2 of the four squares, too.~Images/shareimage1",
-        "Capital letter genes are called dominant genes.~Images/shareimage1",
-        "If they are in any genotype, then they will be apparent. In a Ww type gene, W will be shown.~Images/shareimage1",
-        "Lowercase letter genes are called recessive genes~Images/shareimage1.",
-        "They will only be apparent if both genese are recessive.~Images/shareimage1",
-        "So they can be passed down through generations and only express themselves after being inherited from generations ago.~Images/shareimage1",
-        "Any genotype with two of the same gene are called homozygous, or purebred.~Images/shareimage1",
-        "Two dominant genes, like WW, or two recessive ones, like ww, are homozygous.~Images/shareimage1",
-        "Any genotype with two different genes are called heterozygous, or hybrid.~Images/shareimage1",
-        "So that would be Ww in this case.~Images/shareimage1",
-        "Of course, there's not just homozygous and heterozygous.",
-        "There's also codominance and incomplete dominance! I'll show another punnet square.~Images/shareimage2",
-        "Codominance is when both traits express themselves.~Images/shareimage2",
-        "For example, if one bird had dark blue eyes (BB) and the other had light blue eyes (LL)...~Images/shareimage2",
-        "Then the offspring might have dark blue eyes with light blue dots in them.~Images/shareimage2",
-        "Both parent traits are expressing themselves, they're both dominant.~Images/shareimage2",
-        "Incomplete dominance is when neither trait is shown, and the offspring has its own trait.~Images/shareimage2",
-        "So in the case of BB and LL, or dark blue and light blue...~Images/shareimage2",
-        "The offspring might have normal blue eyes. Neither parent trait is shown.~Images/shareimage2",
-        "If we examine all of the traits, we might be able to match parents!",
-        "We'll send a team to do it right away.",
-        "Thanks for your help on this expedition! We documented so much information!",
+        //"You know. We could probably find out who their parents are.",
+        //"How? Oh, it's simple, we can look at their traits!",
+        //"These birds have dark blue eyes with blue specks and white skin.",
+        //"We can see what genes may have caused this.",
+        //"Here, I'll pull up a diagram. This is called a punnet square.~Images/shareimage1",
+        //"Those letters are called alleles. Alleles are your genes.~Images/shareimage1",
+        //"Each parent passes down one allele for each trait. Both alleles together form your genotype.~Images/shareimage1",
+        //"That's both of those letters together.~Images/shareimage1",
+        //"Each letter represents a different trait.~Images/shareimage1",
+        //"So, for example, capital W means white skin and lowercase w means brown skin.~Images/shareimage1",
+        //"Since each of your parents have 2 alleles in one trait, they pass down one of them.~Images/shareimage1",
+        //"The chance of either gene is random.~Images/shareimage1",
+        //"So, as you see in this punnet sqsuare, if one parent has Ww gene and one has ww gene...~Images/shareimage1",
+        //"The probability of any of their offspring having Ww is 1/2, or 2 of the four squares...~Images/shareimage1",
+        //"The probability of any of them having ww is 1/2, or 2 of the four squares, too.~Images/shareimage1",
+        //"Capital letter genes are called dominant genes.~Images/shareimage1",
+        //"If they are in any genotype, then they will be apparent. In a Ww type gene, W will be shown.~Images/shareimage1",
+        //"Lowercase letter genes are called recessive genes~Images/shareimage1",
+        //"They will only be apparent if both genese are recessive.~Images/shareimage1",
+        //"So they can be passed down through generations and only express themselves after being inherited from generations ago.~Images/shareimage1",
+        //"Any genotype with two of the same gene are called homozygous, or purebred.~Images/shareimage1",
+        //"Two dominant genes, like WW, or two recessive ones, like ww, are homozygous.~Images/shareimage1",
+        //"Any genotype with two different genes are called heterozygous, or hybrid.~Images/shareimage1",
+        //"So that would be Ww in this case.~Images/shareimage1",
+        //"Of course, there's not just homozygous and heterozygous.",
+        //"There's also codominance and incomplete dominance! I'll show another punnet square.~Images/shareimage2",
+        //"Codominance is when both traits express themselves.~Images/shareimage2",
+        //"For example, if one bird had dark blue eyes (BB) and the other had light blue eyes (LL)...~Images/shareimage2",
+        //"Then the offspring might have dark blue eyes with light blue dots in them.~Images/shareimage2",
+        //"Both parent traits are expressing themselves, they're both dominant.~Images/shareimage2",
+        //"Incomplete dominance is when neither trait is shown, and the offspring has its own trait.~Images/shareimage2",
+        //"So in the case of BB and LL, or dark blue and light blue...~Images/shareimage2",
+        //"The offspring might have normal blue eyes. Neither parent trait is shown.~Images/shareimage2",
+        //"If we examine all of the traits, we might be able to match parents!",
+        //"We'll send a team to do it right away.",
+        //"Thanks for your help on this expedition! We documented so much information!",
         "We couldn't have done it without you! Farewell for now!",
         ""},
         //new string[]{"~Images/shareimage2"},
@@ -199,6 +199,10 @@ public class Player : MonoBehaviour
                 currentDialogCounter++;
                 colliderTriggered = false;
                 dialogueImage.SetActive(false);
+                if (currentDialogCounter == dialog.Length)
+                {
+                    StartCoroutine(EndGame());
+                }
             }
             else
             {
@@ -227,6 +231,12 @@ public class Player : MonoBehaviour
         //    Pause();
         //}
         SetCheckpoint();
+    }
+
+    private IEnumerator EndGame()
+    {
+        yield return new WaitForSeconds(2);
+        SceneManager.LoadScene("EndScreen");
     }
 
     private void SetCheckpoint()
@@ -346,7 +356,7 @@ public class Player : MonoBehaviour
         }
 
 
-        if (hit.collider.tag == "bounceEnemy")
+        if (hit.collider.tag == "bounceEnemy" || hit.collider.tag == "bounceEnemyHigher")
         {
             if (hit.distance < distanceToBottom)
             {
@@ -359,7 +369,15 @@ public class Player : MonoBehaviour
                 Debug.Log("entered this thing");
                 Debug.Log("hit distance is " + hit.distance + " dustance to bottom is " + distanceToBottom);
                 directionstomped = "down";
-                hit.collider.GetComponent<EnemyMove>().Crush();
+                if (hit.collider.tag == "bounceEnemy")
+                {
+                    hit.collider.GetComponent<EnemyMove>().Crush();
+                }
+                else
+                {
+                    hit.collider.GetComponent<EnemyMove>().Crush(-4.5f);
+                }
+
                 IEnumerator destroyAfterTime()
                 {
                     yield return null;
@@ -418,7 +436,7 @@ public class Player : MonoBehaviour
     {
         // Debug.Log("entered 2d upon colliosn");
 
-        if (collision.collider.tag == "bounceEnemy")
+        if (collision.collider.tag == "bounceEnemy" || collision.collider.tag == "bounceEnemyHigher")
         {
             GetComponent<Rigidbody2D>().AddForce(Vector2.up * 500);
         }
@@ -506,10 +524,17 @@ public class Player : MonoBehaviour
         }
         if (trigger12)
         {
+<<<<<<< HEAD
+            //if (collisioning.gameObject.name == trigger12.name && collisioning.gameObject != null)
+            //{
+            //    StartCoroutine(LoadFinalScene());
+            //} 
+=======
 //            if (collisioning.gameObject.name == trigger12.name && collisioning.gameObject != null)
             {
               //  StartCoroutine(LoadFinalScene());
             } 
+>>>>>>> 307d5805e7453c570efa918ca89e88dc76f9427a
         }
 
         IEnumerator LoadFinalScene()

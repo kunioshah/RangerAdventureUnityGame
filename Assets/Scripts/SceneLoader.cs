@@ -25,63 +25,63 @@ public class SceneLoader : MonoBehaviour
     [SerializeField] string textstyle;
     int i = 0;
     // Start is called before the first frame update
-    void Start()
-    {
-        autoText.GetComponent<TextMeshProUGUI>().color = Color.clear;
-        manText.GetComponent<TextMeshProUGUI>().color = Color.clear;
-        gameSession = FindObjectOfType<GameSession>();
-        Button btn = button.GetComponent<Button>();
-        btn.onClick.AddListener(LoadScene);
+    //void Start()
+    //{
+    //    autoText.GetComponent<TextMeshProUGUI>().color = Color.clear;
+    //    manText.GetComponent<TextMeshProUGUI>().color = Color.clear;
+    //    gameSession = FindObjectOfType<GameSession>();
+    //    Button btn = button.GetComponent<Button>();
+    //    btn.onClick.AddListener(LoadScene);
        
-        if (firstScreen == false)
-        {
-           // StartCoroutine(HalpTalk());
-        }
-    }
+    //    if (firstScreen == false)
+    //    {
+    //       // StartCoroutine(HalpTalk());
+    //    }
+    //}
 
 
     // Update is called once per frame
-    void Update()
-    {
-        if (halpCheck)
-        {
-            textToChange.GetComponent<TextMeshProUGUI>().color = Color.clear;
-        }
-        else if (!halpCheck)
-        {
-            textToChange.GetComponent<TextMeshProUGUI>().color = Color.white;
-        }
+    //void Update()
+    //{
+    //    if (halpCheck)
+    //    {
+    //        textToChange.GetComponent<TextMeshProUGUI>().color = Color.clear;
+    //    }
+    //    else if (!halpCheck)
+    //    {
+    //        textToChange.GetComponent<TextMeshProUGUI>().color = Color.white;
+    //    }
         
-        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            textDialogue.text = dialogueDict[dialogueCounter];
-            if (dialogueCounter == dialogueDict.Length - 1)
-            {
-                dialogueEnd = true;
-            }
-            else
-            {
-                dialogueCounter++;
-            }
-        }
-        if (dialogueEnd)
-        {
-            autoText.GetComponent<TextMeshProUGUI>().color = Color.white;
-            manText.GetComponent<TextMeshProUGUI>().color = Color.white;
-            Button manbtn = manualButton.GetComponent<Button>();
-            Button autobtn = automaticButton.GetComponent<Button>();
-            manbtn.onClick.AddListener(setStyleMan);
-            autobtn.onClick.AddListener(setStyleAuto);
+    //    if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.RightArrow))
+    //    {
+    //        textDialogue.text = dialogueDict[dialogueCounter];
+    //        if (dialogueCounter == dialogueDict.Length - 1)
+    //        {
+    //            dialogueEnd = true;
+    //        }
+    //        else
+    //        {
+    //            dialogueCounter++;
+    //        }
+    //    }
+    //    if (dialogueEnd)
+    //    {
+    //        autoText.GetComponent<TextMeshProUGUI>().color = Color.white;
+    //        manText.GetComponent<TextMeshProUGUI>().color = Color.white;
+    //        Button manbtn = manualButton.GetComponent<Button>();
+    //        Button autobtn = automaticButton.GetComponent<Button>();
+    //        manbtn.onClick.AddListener(setStyleMan);
+    //        autobtn.onClick.AddListener(setStyleAuto);
 
-            if (selectCheck == true)
-            {
-                dialogueEnd = false;
-                Debug.Log(textstyle);
-                textDialogue.text = "Great! And now, on to the trip.";
-                halpCheck = false;
-            }
-        }
-    }
+    //        if (selectCheck == true)
+    //        {
+    //            dialogueEnd = false;
+    //            Debug.Log(textstyle);
+    //            textDialogue.text = "Great! And now, on to the trip.";
+    //            halpCheck = false;
+    //        }
+    //    }
+    //}
 
     public void setStyleAuto()
     {
@@ -97,6 +97,15 @@ public class SceneLoader : MonoBehaviour
         return textstyle;
     }
 
+    public void LoadFirstScene()
+    {
+        SceneManager.LoadScene("StartScreen");
+    }
+
+    public void LoadMainScene()
+    {
+        SceneManager.LoadScene("Science_Project");
+    }
 
     public void setStyleMan()
     {

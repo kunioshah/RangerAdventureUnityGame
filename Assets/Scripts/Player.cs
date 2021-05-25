@@ -506,9 +506,9 @@ public class Player : MonoBehaviour
         }
         if (trigger12)
         {
-            if (collisioning.gameObject.name == trigger12.name && collisioning.gameObject != null)
+//            if (collisioning.gameObject.name == trigger12.name && collisioning.gameObject != null)
             {
-                StartCoroutine(LoadFinalScene());
+              //  StartCoroutine(LoadFinalScene());
             } 
         }
 
@@ -527,7 +527,7 @@ public class Player : MonoBehaviour
             yield return new WaitForSeconds(3);
             textToChange.text = "This is called relative dating - finding out how old fossils and rock is compared to other fossils and rock. ";
             yield return new WaitForSeconds(3);
-            textToChange.text = "Plus, you see that little spiral fossil? How it's only in that one layer? That's what we call an index fossil, a recognizable fossil only in one time period that we can use as an index for others.";
+            textToChange.text = "Plus, you see that little skull fossil? How it's only in that one layer? That's what we call an index fossil, a recognizable fossil only in one time period that we can use as an index for others.";
             yield return new WaitForSeconds(3);
             textToChange.text = "Of course, the other kind of dating - talking about rocks, anyways - is radioactive dating. ";
             yield return new WaitForSeconds(3);

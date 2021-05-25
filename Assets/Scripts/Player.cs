@@ -47,9 +47,9 @@ public class Player : MonoBehaviour
         new string[] {"Hey there! Welcome to my 8th Grade Life Sciences Project.",
         "This project was made by Kunal Shah, 8th grade.",
         "I'll be explaining a few principles of life science through this game! Let's get started!",
-        "You play as a ranger documenting ingo, with your robot guide helping you.",
+        "You play as a ranger documenting info, with your robot guide helping you.",
         "The only commands you need are the arrow keys to move and space to jump!",
-        "Have fun!"},
+        "Have fun :D"},
         new string[]{"Hmm, that looks like cacti... Make sure not to touch it!"},
         new string[]{"Look at this hill! There are so many layers in it, and the hill is filled with fossils! Fascinating."},
         new string[]{"As the layers go up, the fossils change... This is like a natural time scale! We call this the fossil record....",
@@ -61,7 +61,7 @@ public class Player : MonoBehaviour
         "This is called relative dating - finding out how old fossils and rock is compared to other fossils and rock."},
         new string[]{"You can see how the organisms became more complex overtime." ,
             "A lot of them look similar, they must have evolved from the older organisms.",
-            "Plus, you see that little spiral fossil? How it's only in that one layer?",
+            "Plus, you see that little skull fossil? How it's only in that one layer?",
             "That's what we call an index fossil, a recognizable fossil only in one time period that we use as an index for others.",
             "Of course, the other kind of dating - talking about rocks, anyways - is radioactive dating.",
             "Basically, elements decay at a certain rate, called their half life.",
@@ -375,7 +375,7 @@ public class Player : MonoBehaviour
                 }
                 else
                 {
-                    hit.collider.GetComponent<EnemyMove>().Crush(-4.5f);
+                    hit.collider.GetComponent<EnemyMove>().Crush(-2.3f);
                 }
 
                 IEnumerator destroyAfterTime()
@@ -425,10 +425,11 @@ public class Player : MonoBehaviour
     IEnumerator Die()
     {
         playerState = PlayerState.Death;
+        GetComponent<AudioSource>().Play();
         isDead = true;
         ChangeAnimation();
         yield return new WaitForSeconds(1.02f);
-     
+        
         SceneManager.LoadScene("Science_Project");
     }
 

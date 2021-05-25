@@ -1279,6 +1279,61 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1300442006
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1300442008}
+  - component: {fileID: 1300442007}
+  m_Layer: 0
+  m_Name: SceneLoader
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1300442007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1300442006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46b64663a6ca74f9397710a91a67d42b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button: {fileID: 0}
+  manualButton: {fileID: 0}
+  automaticButton: {fileID: 0}
+  halpCheck: 0
+  firstScreen: 0
+  textToChange: {fileID: 0}
+  textDialogue: {fileID: 0}
+  autoText: {fileID: 0}
+  manText: {fileID: 0}
+  dialogueEnd: 0
+  dialogueDict: []
+  textstyle: 
+--- !u!4 &1300442008
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1300442006}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 111.779625, y: 15.657059, z: -11.259813}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1522919670
@@ -1293,7 +1348,6 @@ GameObject:
   - component: {fileID: 1522919674}
   - component: {fileID: 1522919673}
   - component: {fileID: 1522919672}
-  - component: {fileID: 1522919675}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -1364,7 +1418,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1522919673}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1300442007}
+        m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
+        m_MethodName: LoadFirstScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1522919673
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1403,30 +1469,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1522919670}
   m_CullTransparentMesh: 1
---- !u!114 &1522919675
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1522919670}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46b64663a6ca74f9397710a91a67d42b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  button: {fileID: 1522919672}
-  manualButton: {fileID: 1522919672}
-  automaticButton: {fileID: 1522919672}
-  halpCheck: 0
-  firstScreen: 1
-  textToChange: {fileID: 1103962587}
-  textDialogue: {fileID: 1103962587}
-  autoText: {fileID: 1103962587}
-  manText: {fileID: 1103962587}
-  dialogueEnd: 0
-  dialogueDict: []
-  textstyle: 
 --- !u!1 &1773813578
 GameObject:
   m_ObjectHideFlags: 0

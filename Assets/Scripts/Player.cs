@@ -187,7 +187,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         // if (hasPlayer && Input.GetKeyDown(KeyCode.A))
-        if (Input.GetKeyDown(KeyCode.K) && colliderTriggered)
+        if (Input.GetKeyDown(KeyCode.F) && colliderTriggered)
         {
             if (currentSubDialog > dialog[currentDialogCounter].Length - 1)
             { 

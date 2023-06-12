@@ -42,7 +42,8 @@ public class Player : MonoBehaviour
     int currentSubDialog = 0;
     bool colliderTriggered = false;
     GameObject dialogueImage;
-    string[][] dialog = new string[][]
+    string[][] dialog = new string[][]{};
+    string[][] dialog1 = new string[][]
     {
         new string[] {"Hey there! Welcome to my 8th Grade Life Sciences Project.",
         "This project was made by Kunal Shah, 8th grade.",
@@ -179,47 +180,54 @@ public class Player : MonoBehaviour
             transform.position = p;
 
             currentDialogCounter = gameSession.GetDialogCounter();
-            FindObjectOfType<Canvas>().enabled = false;
+            if (FindObjectOfType<Canvas>() != null){
+                FindObjectOfType<Canvas>().enabled = false;
+            }
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        // if (hasPlayer && Input.GetKeyDown(KeyCode.A))
-        if (Input.GetKeyDown(KeyCode.F) && colliderTriggered)
+        if (dialog.Length > 0)
         {
-            if (currentSubDialog > dialog[currentDialogCounter].Length - 1)
-            { 
-                FindObjectOfType<Canvas>().enabled = false;
-                textToChange.text = "...";
-                UnPause();
-                whatere = true;
-                currentSubDialog = 0;
-                currentDialogCounter++;
-                colliderTriggered = false;
-                dialogueImage.SetActive(false);
-                if (currentDialogCounter == dialog.Length)
-                {
-                    StartCoroutine(EndGame());
-                }
-            }
-            else
+            // if (hasPlayer && Input.GetKeyDown(KeyCode.A))
+            if (Input.GetKeyDown(KeyCode.F) && colliderTriggered)
             {
-                Pause();
-                //Debug.Log("currentdialogcounter=" + currentDialogCounter + " currentSubDialog=" + currentSubDialog);
-                dialogueImage.SetActive(false);
-                var dialogTextArray = dialog[currentDialogCounter][currentSubDialog].Split('~');
-                textToChange.text = dialogTextArray[0];
-                if (dialogTextArray.Length > 1)
-                {
-
-                    dialogueImage.GetComponent<Image>().sprite = Resources.Load<Sprite>(dialogTextArray[1]);
-                    dialogueImage.SetActive(true);
+                if (currentSubDialog > dialog[currentDialogCounter].Length - 1)
+                { 
+                    if (FindObjectOfType<Canvas>() != null){
+                        FindObjectOfType<Canvas>().enabled = false;
+                    }
+                    textToChange.text = "...";
+                    UnPause();
+                    whatere = true;
+                    currentSubDialog = 0;
+                    currentDialogCounter++;
+                    colliderTriggered = false;
+                    dialogueImage.SetActive(false);
+                    if (currentDialogCounter == dialog.Length)
+                    {
+                        StartCoroutine(EndGame());
+                    }
                 }
-                currentSubDialog++;
-            }
+                else
+                {
+                    Pause();
+                    //Debug.Log("currentdialogcounter=" + currentDialogCounter + " currentSubDialog=" + currentSubDialog);
+                    dialogueImage.SetActive(false);
+                    var dialogTextArray = dialog[currentDialogCounter][currentSubDialog].Split('~');
+                    textToChange.text = dialogTextArray[0];
+                    if (dialogTextArray.Length > 1)
+                    {
 
+                        dialogueImage.GetComponent<Image>().sprite = Resources.Load<Sprite>(dialogTextArray[1]);
+                        dialogueImage.SetActive(true);
+                    }
+                    currentSubDialog++;
+                }
+
+            }
         }
         PlayerMove();
         PlayerRaycast();
@@ -450,20 +458,23 @@ public class Player : MonoBehaviour
 
     void dialogueProgress(GameObject trigger, Collider2D collisions, string dialogue)
     {
-        if (collisions.gameObject.name == trigger.name && collisions.gameObject != null)
+        if (dialog.Length > 0)
         {
-            FindObjectOfType<Canvas>().enabled = true;
-            textToChange.text = dialog[currentDialogCounter][0];
-            if (gameSession.GetGameState() == GameState.Manual)
+            if (collisions.gameObject.name == trigger.name && collisions.gameObject != null)
             {
-                Pause();
-                Destroy(trigger);
-                currentSubDialog++;
-                colliderTriggered = true;
-                //Destroy(collisions);
-                //UnPause();
-            }
+                FindObjectOfType<Canvas>().enabled = true;
+                textToChange.text = dialog[currentDialogCounter][0];
+                if (gameSession.GetGameState() == GameState.Manual)
+                {
+                    Pause();
+                    Destroy(trigger);
+                    currentSubDialog++;
+                    colliderTriggered = true;
+                    //Destroy(collisions);
+                    //UnPause();
+                }
 
+            }
         }
     }
 
@@ -524,12 +535,6 @@ public class Player : MonoBehaviour
             dialogueProgress(trigger11, collision, "blahblahblha");
         }
         
-
-        IEnumerator LoadFinalScene()
-        {
-            yield return new WaitForSeconds(2);
-            SceneManager.LoadScene("EndScreen");
-        }
         IEnumerator LizardText()
         {
             textToChange.text = "As the layers go up, the fossils change... This is like a natural time scale! We call this the fossil record.";
